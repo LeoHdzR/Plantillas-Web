@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Ti</title>
+    <title>Para Ti, Max</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -35,10 +35,9 @@
             overflow: hidden;
         }
 
-        /* Contenedor principal estilo Móvil */
         .mobile-container {
             width: 100%;
-            max-width: 420px; /* Tamaño de celular */
+            max-width: 420px;
             height: 100vh;
             max-height: 900px;
             background: white;
@@ -47,7 +46,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        /* --- PANTALLA 1: SOBRE --- */
+        /* --- PANTALLA 0: SOBRE --- */
         #screen-envelope {
             width: 100%;
             height: 100%;
@@ -62,62 +61,12 @@
             transition: transform 1s ease-in-out;
         }
 
-        .envelope-wrapper {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .envelope {
-            width: 300px;
-            height: 200px;
-            background: var(--primary-pink);
-            position: relative;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-
-        .envelope::before { /* Solapa izquierda */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 150px solid #ff758f;
-            border-top: 100px solid transparent;
-            border-bottom: 100px solid transparent;
-        }
-
-        .envelope::after { /* Solapa derecha */
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 0;
-            border-right: 150px solid #ff758f;
-            border-top: 100px solid transparent;
-            border-bottom: 100px solid transparent;
-        }
-
-        .flap { /* Solapa superior (la que se abre) */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 110px solid #ff5d7a;
-            transform-origin: top;
-            transition: transform 0.6s;
-            z-index: 5;
-        }
-
-        .envelope.open .flap {
-            transform: rotateX(180deg);
-            z-index: 1;
-        }
+        .envelope-wrapper { position: relative; cursor: pointer; }
+        .envelope { width: 300px; height: 200px; background: var(--primary-pink); position: relative; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
+        .envelope::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 150px solid #ff758f; border-top: 100px solid transparent; border-bottom: 100px solid transparent; }
+        .envelope::after { content: ''; position: absolute; top: 0; right: 0; width: 0; height: 0; border-right: 150px solid #ff758f; border-top: 100px solid transparent; border-bottom: 100px solid transparent; }
+        .flap { position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 110px solid #ff5d7a; transform-origin: top; transition: transform 0.6s; z-index: 5; }
+        .envelope.open .flap { transform: rotateX(180deg); z-index: 1; }
 
         .letter-preview {
             position: absolute;
@@ -127,14 +76,12 @@
             height: 150px;
             background: white;
             z-index: 2;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             transition: transform 0.6s 0.2s;
+            overflow: hidden;
         }
-
-        .envelope.open .letter-preview {
-            transform: translateY(-80px);
-        }
+        .envelope.open .letter-preview { transform: translateY(-80px); }
 
         .heart-seal {
             position: absolute;
@@ -147,18 +94,8 @@
             cursor: pointer;
             animation: pulse 1.5s infinite;
         }
-
-        @keyframes pulse {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.2); }
-            100% { transform: translate(-50%, -50%) scale(1); }
-        }
-
-        .instruction-text {
-            margin-top: 50px;
-            color: #888;
-            font-size: 0.9rem;
-        }
+        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.2); } 100% { transform: translate(-50%, -50%) scale(1); } }
+        .instruction-text { margin-top: 50px; color: #888; font-size: 0.9rem; }
 
         /* --- ESTILOS GENERALES REVISTA --- */
         .magazine-screen {
@@ -167,17 +104,14 @@
             background-color: var(--paper-color);
             position: absolute;
             top: 0;
-            left: 100%; /* Empieza fuera de pantalla */
+            left: 100%;
             transition: left 0.5s ease;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
             padding: 20px;
         }
-
-        .magazine-screen.active {
-            left: 0;
-        }
+        .magazine-screen.active { left: 0; }
 
         .header-bar {
             border-bottom: 2px solid var(--dark-pink);
@@ -190,158 +124,48 @@
             padding-bottom: 5px;
         }
 
-        .main-title {
-            font-family: var(--newspaper-font);
-            font-size: 2.5rem;
-            color: var(--dark-pink);
-            line-height: 1;
-            margin-bottom: 10px;
-            text-align: center;
-        }
+        .main-title { font-family: var(--newspaper-font); font-size: 2.5rem; color: var(--dark-pink); line-height: 1; margin-bottom: 10px; text-align: center; }
+        .sub-title { font-family: var(--newspaper-font); font-style: italic; text-align: center; font-size: 1.2rem; margin-bottom: 15px; }
 
-        .sub-title {
-            font-family: var(--newspaper-font);
-            font-style: italic;
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        /* --- PANTALLA 2: ARTÍCULO PRINCIPAL --- */
+        /* --- CORRECCIÓN DE LA FOTO --- */
         .photo-frame {
             width: 100%;
-            height: 250px;
+            height: auto; 
+            max-height: 350px; 
             background-color: #eee;
             border: 1px solid #ddd;
             padding: 5px;
             margin-bottom: 15px;
-            /* Aquí va la imagen */
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
         }
 
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: sepia(0.2);
+        .photo-frame img { 
+            width: 100%; 
+            height: auto; 
+            max-height: 340px;
+            object-fit: contain; 
+            filter: sepia(0.2); 
         }
 
-        .article-body {
-            font-family: var(--newspaper-font);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            text-align: justify;
-        }
+        .article-body { font-family: var(--newspaper-font); font-size: 0.95rem; line-height: 1.6; text-align: justify; }
+        .article-body::first-letter { font-size: 3rem; float: left; line-height: 0.8; margin-right: 5px; font-weight: bold; color: var(--dark-pink); }
 
-        .article-body::first-letter {
-            font-size: 3rem;
-            float: left;
-            line-height: 0.8;
-            margin-right: 5px;
-            font-weight: bold;
-            color: var(--dark-pink);
-        }
+        /* --- ESTILOS DE VIDEO --- */
+        .video-container { width: 100%; background-color: #eee; border: 1px solid #ddd; padding: 5px; margin: 20px 0; display: flex; justify-content: center; align-items: center; }
+        .video-container video { width: 100%; border-radius: 4px; outline: none; }
 
-        /* --- PANTALLA 3: 5 RAZONES --- */
-        .reasons-list {
-            list-style: none;
-            margin-top: 20px;
-        }
-
-        .reason-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px dashed #ffccd5;
-            padding-bottom: 10px;
-        }
-
-        .reason-number {
-            font-family: var(--newspaper-font);
-            font-size: 2.5rem;
-            color: var(--dark-pink);
-            margin-right: 15px;
-            font-weight: bold;
-        }
-
-        .reason-text {
-            font-size: 0.9rem;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* --- PANTALLA 4: LA PREGUNTA --- */
-        .question-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 80%;
-            text-align: center;
-        }
-
-        .big-question {
-            font-family: var(--handwriting-font);
-            font-size: 3.5rem;
-            color: var(--dark-pink);
-            margin: 30px 0;
-        }
-
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-        }
-
-        .btn {
-            padding: 15px;
-            border: 2px solid var(--dark-pink);
-            background: white;
-            color: var(--dark-pink);
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .btn:hover {
-            background: var(--dark-pink);
-            color: white;
-        }
-
-        .btn-primary {
-            background: var(--dark-pink);
-            color: white;
-        }
+        /* --- ESTILOS DE LISTA --- */
+        .reasons-list { list-style: none; margin-top: 20px; }
+        .reason-item { display: flex; align-items: center; margin-bottom: 20px; border-bottom: 1px dashed #ffccd5; padding-bottom: 10px; }
+        .reason-number { font-family: var(--newspaper-font); font-size: 2.5rem; color: var(--dark-pink); margin-right: 15px; font-weight: bold; }
+        .reason-text { font-size: 0.9rem; font-family: 'Poppins', sans-serif; }
 
         /* --- NAVEGACION --- */
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: auto;
-            padding-top: 20px;
-        }
-
-        .nav-btn {
-            background: none;
-            border: 1px solid var(--dark-pink);
-            padding: 5px 15px;
-            color: var(--dark-pink);
-            cursor: pointer;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
-
-        /* Utilidad para esconder elementos */
-        .hidden {
-            display: none;
-        }
-
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: auto; padding-top: 20px; padding-bottom: 20px; }
+        .nav-btn { background: none; border: 1px solid var(--dark-pink); padding: 5px 15px; color: var(--dark-pink); cursor: pointer; font-size: 0.8rem; text-transform: uppercase; }
+        .btn-primary { background: var(--dark-pink); color: white; padding: 10px 20px; border: none; font-weight: bold; width: 100%; border-radius: 5px; margin-top: 10px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -354,11 +178,8 @@
             <div class="envelope" id="envelope">
                 <div class="flap"></div>
                 <div class="letter-preview">
-                    <p style="font-family: var(--newspaper-font); font-size: 0.8rem;">Contigo aprendí que el amor no se debilita con la distancia,
-porque cuando es real, encuentra la forma de sentirse incluso a kilómetros..<br>Para descubrirla da click sobre el corazón.</p>
-                    <div style="margin-top: 10px; font-size: 0.7rem; color: #555;">
-                        <br>De: Pame<br>Para: Max
-                    </div>
+                    <p style="font-family: var(--newspaper-font); font-size: 0.75rem;">Contigo aprendí que el amor no se debilita con la distancia, porque cuando es real, encuentra la forma de sentirse incluso a kilómetros.<br>Da click en el corazón.</p>
+                    <div style="margin-top: 5px; font-size: 0.7rem; color: #555;"><br>De: Pame<br>Para: Max</div>
                 </div>
                 <div class="heart-seal">❤️</div>
             </div>
@@ -382,11 +203,9 @@ porque cuando es real, encuentra la forma de sentirse incluso a kilómetros..<br
 
         <div class="article-body">
             <p>
-                Hoy 14 de febrero del 2026 en un mundo donde el amor se ha vuelto algo momentáneo, donde las personas dicen un “Te amo” sin sentirlo, donde el amor se basa en cosas materiales, donde al llegar el primer problema deciden rendirse e irse nos encontramos tu y yo, que aunque el destino ya nos había topado hace algunos años hoy más de 5 años despues ya no somos solo Pame y Max, hoy somos un equipo, somos dos personitas entre millones que Dios junto para crecer y aprender uno de el otro. Mi niño quiero que sepas que me siento muy  afortunada de poder estar a tu lado, me siento muy orgullosa de el hombre que eras hace 5 meses y de el que eres hoy y así siempre será.
-                Alguna vez has escuchado esto en las bodas : ”El amor es paciente, es amable, el amor no es envidioso, no presume,  no compite, el amor no es orgulloso ni arrogante, no se alegra de la injusticia si no con la verdad. Todo lo excusa, todo lo cree, todo lo espera y todo lo soporta. El amor no termina nunca”. Siempre he pensado que es algo muy lindo, que describe el amor real y yo creo que lo nuestro se parece a eso.
-                No porque seamos perfectos, 
-                sino porque incluso en la distancia hemos elegido paciencia, comprensión y verdad.
-                Para mi eso es el amor real, y es lo que siento por ti. Por último quiero que sepas que sé que este es solo el inicio de la historia más bonita de amor que el mundo haya visto y es la más bonita porque es nuestra. Aunque me encantaría darte el mundo entero y si se pudiera lo haría, lo más cercano que tengo a eso es darte cada día de nuestras vidas todo mi cariño, mi lealtad, mi respeto, mi admiración, mi sinceridad, mi apoyo y comprensión y sobre todo el amor más puro y sincero que hay en mí, y que cada día que pase a tu lado tendrás a alguien que te ama con cada pedacito de su alma y cada latido de su corazón.
+                Hoy 14 de febrero del 2026 en un mundo donde el amor se ha vuelto algo momentáneo, donde las personas dicen un “Te amo” sin sentirlo, donde el amor se basa en cosas materiales, donde al llegar el primer problema deciden rendirse e irse nos encontramos tu y yo. 
+                <br><br>
+                Aunque el destino ya nos había topado hace algunos años, hoy más de 5 años despues ya no somos solo Pame y Max. Hoy somos un equipo, somos dos personitas entre millones que Dios junto para crecer y aprender uno de el otro.
             </p>
         </div>
 
@@ -397,39 +216,19 @@ porque cuando es real, encuentra la forma de sentirse incluso a kilómetros..<br
 
     <div id="page2" class="magazine-screen">
         <div class="header-bar">
-            <span>Top 5</span>
-            <span>Lo que me enamora</span>
-            <span>Juntos</span>
+            <span>Página 2</span>
+            <span>Continuación</span>
+            <span>Nuestra Historia</span>
         </div>
 
-        <h1 class="main-title" style="font-size: 2rem;">05 Razones</h1>
-        <div class="sub-title">Por las que eres mi lugar seguro</div>
-
-        <ul class="reasons-list">
-            <li class="reason-item">
-                <span class="reason-number">1</span>
-                <span class="reason-text">Porque me amaste antes de haberme visto o besado.</span>
-            </li>
-            <li class="reason-item">
-                <span class="reason-number">2</span>
-                <span class="reason-text">Porque incluso estando a kilómetros de distancia, me haces sentir amada.</span>
-            </li>
-            <li class="reason-item">
-                <span class="reason-number">3</span>
-                <span class="reason-text">Porque eres un hombre honesto, leal, inteligente, caballeroso, noble y cariñoso.</span>
-            </li>
-            <li class="reason-item">
-                <span class="reason-number">4</span>
-                <span class="reason-text">Porque confías en mí.</span>
-            </li>
-            <li class="reason-item">
-                <span class="reason-number">5</span>
-                <span class="reason-text">Porque a tu lado me siento en paz.</span>
-            </li>
-        </ul>
-
-        <div style="text-align: center; margin-top: 20px; font-style: italic; color: #888;">
-            Debes decir "Sí"
+        <div class="article-body" style="margin-top: 10px;">
+            <p>
+                Mi niño quiero que sepas que me siento muy afortunada de poder estar a tu lado, me siento muy orgullosa de el hombre que eras hace 5 meses y de el que eres hoy y así siempre será.
+                <br><br>
+                Alguna vez has escuchado esto en las bodas: ”El amor es paciente, es amable, el amor no es envidioso, no presume, no compite, el amor no es orgulloso ni arrogante, no se alegra de la injusticia si no con la verdad. Todo lo excusa, todo lo cree, todo lo espera y todo lo soporta. El amor no termina nunca”. 
+                <br><br>
+                Siempre he pensado que es algo muy lindo, que describe el amor real y yo creo que lo nuestro se parece a eso. No porque seamos perfectos, sino porque incluso en la distancia hemos elegido paciencia, comprensión y verdad. Para mi eso es el amor real, y es lo que siento por ti.
+            </p>
         </div>
 
         <div class="nav-buttons">
@@ -440,44 +239,90 @@ porque cuando es real, encuentra la forma de sentirse incluso a kilómetros..<br
 
     <div id="page3" class="magazine-screen">
         <div class="header-bar">
-            <span>La Gran Pregunta</span>
-            <span>Solo di que sí</span>
-            <span>&lt;3</span>
+            <span>Página 3</span>
+            <span>Desenlace</span>
+            <span>Nuestra Historia</span>
         </div>
 
-        <div class="question-container">
-            <p>Así que ahora si...</p>
-            <p>Con el corazón en la mano y una sonrisa nerviosa:</p>
-            
-            <h1 class="big-question">¿Quieres ser mi San Valentín?</h1>
-
-            <div class="btn-group">
-                <button class="btn" onclick="celebrate()">OBVIO, LO ESTABA ESPERANDO</button>
-                <button class="btn btn-primary" onclick="celebrate()">¡SI! POR SUPUESTOOO</button>
-            </div>
+        <div class="article-body" style="margin-top: 10px;">
+            <p>
+                Por último quiero que sepas que sé que este es solo el inicio de la historia más bonita de amor que el mundo haya visto y es la más bonita porque es nuestra. 
+                <br><br>
+                Aunque me encantaría darte el mundo entero y si se pudiera lo haría, lo más cercano que tengo a eso es darte cada día de nuestras vidas todo mi cariño, mi lealtad, mi respeto, mi admiración, mi sinceridad, mi apoyo y comprensión y sobre todo el amor más puro y sincero que hay en mí.
+                <br><br>
+                Cada día que pase a tu lado tendrás a alguien que te ama con cada pedacito de su alma y cada latido de su corazón.
+            </p>
         </div>
 
         <div class="nav-buttons">
             <button class="nav-btn" onclick="prevPage(3)">&larr; Pág. Anterior</button>
+            <button class="nav-btn" onclick="nextPage(3)">Pág. Siguiente &rarr;</button>
+        </div>
+    </div>
+
+    <div id="page4" class="magazine-screen">
+        <div class="header-bar">
+            <span>Top 5</span>
+            <span>Lo que me enamora</span>
+            <span>Juntos</span>
+        </div>
+
+        <h1 class="main-title" style="font-size: 2rem;">05 Razones</h1>
+        <div class="sub-title">Por las que eres mi lugar seguro</div>
+
+        <ul class="reasons-list">
+            <li class="reason-item"><span class="reason-number">1</span><span class="reason-text">Porque me amaste antes de haberme visto o besado.</span></li>
+            <li class="reason-item"><span class="reason-number">2</span><span class="reason-text">Porque incluso estando a kilómetros de distancia, me haces sentir amada.</span></li>
+            <li class="reason-item"><span class="reason-number">3</span><span class="reason-text">Porque eres un hombre honesto, leal, inteligente, caballeroso, noble y cariñoso.</span></li>
+            <li class="reason-item"><span class="reason-number">4</span><span class="reason-text">Porque confías en mí.</span></li>
+            <li class="reason-item"><span class="reason-number">5</span><span class="reason-text">Porque a tu lado me siento en paz.</span></li>
+        </ul>
+
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="prevPage(4)">&larr; Pág. Anterior</button>
+            <button class="nav-btn" onclick="nextPage(4)">Ver Sorpresa &rarr;</button>
+        </div>
+    </div>
+
+    <div id="page5" class="magazine-screen">
+        <div class="header-bar">
+            <span>Para Ti</span>
+            <span>Nuestros Recuerdos</span>
+            <span>&lt;3</span>
+        </div>
+
+        <h1 class="main-title" style="font-size: 2.2rem; margin-top: 10px;">Un pequeño detalle</h1>
+        <div class="sub-title">Porque una imagen vale mil palabras</div>
+
+        <div class="video-container">
+            <video controls playsinline>
+                <source src="mivideo.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <p style="font-family: var(--handwriting-font); font-size: 1.8rem; color: var(--dark-pink);">Te amo, Max</p>
+            <button class="btn-primary" onclick="celebrate()">¡Feliz San Valentín! ❤️</button>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="prevPage(5)">&larr; Pág. Anterior</button>
         </div>
     </div>
 
 </div>
 
 <script>
-    // Lógica para abrir el sobre
     function openEnvelope() {
         const envelope = document.getElementById('envelope');
         envelope.classList.add('open');
-        
-        // Esperar la animación y cambiar de pantalla
         setTimeout(() => {
             document.getElementById('screen-envelope').style.transform = 'translateY(-100%)';
             document.getElementById('page1').classList.add('active');
         }, 1000);
     }
 
-    // Navegación entre páginas
     function nextPage(currentPage) {
         document.getElementById('page' + currentPage).classList.remove('active');
         document.getElementById('page' + (currentPage + 1)).classList.add('active');
@@ -490,37 +335,15 @@ porque cuando es real, encuentra la forma de sentirse incluso a kilómetros..<br
         document.getElementById('page' + (currentPage - 1)).classList.add('active');
     }
 
-    // Celebración con confeti
     function celebrate() {
-        // Lanzar confeti
         var duration = 3000;
         var end = Date.now() + duration;
 
         (function frame() {
-            confetti({
-                particleCount: 5,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 },
-                colors: ['#ff0000', '#ffb7c5', '#ffffff'] 
-            });
-            confetti({
-                particleCount: 5,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors: ['#ff0000', '#ffb7c5', '#ffffff']
-            });
-
-            if (Date.now() < end) {
-                requestAnimationFrame(frame);
-            }
+            confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#ff0000', '#ffb7c5', '#ffffff'] });
+            confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#ff0000', '#ffb7c5', '#ffffff'] });
+            if (Date.now() < end) requestAnimationFrame(frame);
         }());
-
-        // Alerta dulce opcional
-        setTimeout(() => {
-            alert("¡Sabía que dirías que sí! ❤️ Te amo.");
-        }, 500);
     }
 </script>
 
