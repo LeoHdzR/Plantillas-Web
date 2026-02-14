@@ -58,14 +58,14 @@
             z-index: 10;
             position: absolute;
             top: 0;
-            transition: transform 1s ease-in-out;
+            transition: transform 4s ease-in-out;
         }
 
         .envelope-wrapper { position: relative; cursor: pointer; }
         .envelope { width: 300px; height: 200px; background: var(--primary-pink); position: relative; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
         .envelope::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 150px solid #ff758f; border-top: 100px solid transparent; border-bottom: 100px solid transparent; }
         .envelope::after { content: ''; position: absolute; top: 0; right: 0; width: 0; height: 0; border-right: 150px solid #ff758f; border-top: 100px solid transparent; border-bottom: 100px solid transparent; }
-        .flap { position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 110px solid #ff5d7a; transform-origin: top; transition: transform 0.6s; z-index: 5; }
+        .flap { position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 110px solid #ff5d7a; transform-origin: top; transition: transform 0.4s; z-index: 5; }
         .envelope.open .flap { transform: rotateX(180deg); z-index: 1; }
 
         .letter-preview {
@@ -78,7 +78,7 @@
             z-index: 2;
             padding: 15px;
             text-align: center;
-            transition: transform 0.6s 0.2s;
+            transition: transform 1.6s 0.2s;
             overflow: hidden;
         }
         .envelope.open .letter-preview { transform: translateY(-80px); }
@@ -173,12 +173,12 @@
 <div class="mobile-container">
 
     <div id="screen-envelope">
-        <div style="margin-bottom: 30px; font-family: var(--handwriting-font); font-size: 2rem;">Sitio Web Personalizado</div>
+        <div style="margin-bottom: 30px; font-family: var(--handwriting-font); font-size: 2rem;">Carta de amor</div>
         <div class="envelope-wrapper" onclick="openEnvelope()">
             <div class="envelope" id="envelope">
                 <div class="flap"></div>
                 <div class="letter-preview">
-                    <p style="font-family: var(--newspaper-font); font-size: 0.75rem;">Contigo aprendí que el amor no se debilita con la distancia, porque cuando es real, encuentra la forma de sentirse incluso a kilómetros.<br>Da click en el corazón.</p>
+                    <p style="font-family: var(--newspaper-font); font-size: 0.75rem;">Contigo aprendí que el amor no se debilita con la distancia, porque cuando es real, encuentra la forma de sentirse incluso a kilómetros.<br></p>
                     <div style="margin-top: 5px; font-size: 0.7rem; color: #555;"><br>De: Pame<br>Para: Max</div>
                 </div>
                 <div class="heart-seal">❤️</div>
@@ -292,7 +292,7 @@
         </div>
 
         <h1 class="main-title" style="font-size: 2.2rem; margin-top: 10px;">Un pequeño detalle</h1>
-        <div class="sub-title">Porque una imagen vale mil palabras</div>
+        <div class="sub-title">Porque cada segundo a tu lado es especial</div>
 
         <div class="video-container">
             <video controls playsinline>
@@ -302,7 +302,7 @@
         </div>
 
         <div style="text-align: center; margin-top: 20px;">
-            <p style="font-family: var(--handwriting-font); font-size: 1.8rem; color: var(--dark-pink);">Te amo, Max</p>
+            <p style="font-family: var(--handwriting-font); font-size: 1.8rem; color: var(--dark-pink);">Te amo, Cielito</p>
             <button class="btn-primary" onclick="celebrate()">¡Feliz San Valentín! ❤️</button>
         </div>
 
@@ -320,7 +320,7 @@
         setTimeout(() => {
             document.getElementById('screen-envelope').style.transform = 'translateY(-100%)';
             document.getElementById('page1').classList.add('active');
-        }, 1000);
+        }, 6000);
     }
 
     function nextPage(currentPage) {
